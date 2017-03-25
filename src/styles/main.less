@@ -1,0 +1,67 @@
+@import 'variables.less';
+@import url('https://fonts.googleapis.com/css?family=Dosis:300,500,700|Ubuntu:500');
+
+body {
+  background-color:  @violet-blue;
+  color: lightslategray;
+  margin: 0;
+  font-family: 'Dosis', 'Arial Narrow', Arial, sans-serif;
+}
+h1, h2, h3 {
+  color: @red-rustic;
+}
+
+.container {
+  height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow: auto;
+  display: flex;
+  background-image: linear-gradient(
+    @gray-blue,
+    @violet-blue,
+    @violet-blue 95vh,
+    average(@dark-rustic, @violet-blue),
+    average(@orange-rustic, @violet-blue) 99vh,
+    average(orange, @violet-blue));
+}
+
+.starships-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-left: 0;
+}
+
+.starship-card {
+  color: @violet-blue;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 0 1rem 1rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  flex: 1 0 auto;
+  min-width: 20vw;
+  font-weight: 500;
+  div:not(:first-child) {
+    margin: 0.5rem 0;
+  }
+  h4 {
+    display: inline-block;
+    margin: 0;
+    font-weight: 300;
+    &::after {
+      content: ': '
+    }
+  }
+  .sc-name {
+    font-family: 'Ubuntu';
+    border-bottom: 1px solid gray;
+    box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+    margin: 0 -1rem;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+  }
+  .sc-model {
+    color: @dark-rustic;
+  }
+}
