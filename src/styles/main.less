@@ -65,3 +65,27 @@ h1, h2, h3 {
     color: @dark-rustic;
   }
 }
+.load-more {
+  border: none;
+  font-family: 'Ubuntu';
+  font-size: 1rem;
+  padding: 1rem;
+  color: @red-rustic;
+  background-color: rgba(255, 255, 255, 0.3);
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.2)
+  );
+  width: calc(100% ~'-' 1rem);
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  display: block;
+  cursor: pointer;
+  &:hover, &:active, &:focus {
+    background-image: linear-gradient(
+    @gray-blue,
+      average(@violet-blue, @gray-blue)
+    );
+    outline: none;
+  }
+}
