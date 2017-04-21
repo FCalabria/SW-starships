@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
 module.exports = {
   entry: {
     bundle: "./src/main.js",
@@ -31,6 +31,17 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin("vendor")
+    new webpack.optimize.UglifyJsPlugin({
+      beautify: false,
+      mangle: {
+        screw_ie8: true,
+        keep_fnames: true
+      },
+      compress: {
+        screw_ie8: true
+      },
+      comments: false
+    })
   ],
   devtool: "cheap-module-eval-source-map"
 };
