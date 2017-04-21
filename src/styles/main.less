@@ -11,6 +11,16 @@ h1, h2, h3 {
   color: @red-rustic;
 }
 
+a {
+  color: @orange-rustic;
+  &:visited {
+    color: @dark-rustic;
+  }
+  &:focus, &:active, &:hover {
+    color: @red-rustic;
+  }
+}
+
 .container {
   height: 100vh;
   padding: 2rem;
@@ -42,6 +52,7 @@ h1, h2, h3 {
   flex: 1 0 auto;
   min-width: 20vw;
   font-weight: 500;
+  position: relative;
   div:not(:first-child) {
     margin: 0.5rem 0;
   }
@@ -63,6 +74,13 @@ h1, h2, h3 {
   }
   .sc-model {
     color: @dark-rustic;
+  }
+  .sc-link {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 1.7rem;
+    text-decoration: none;
   }
 }
 .load-more {

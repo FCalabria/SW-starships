@@ -8,8 +8,14 @@ import {connect} from 'react-redux';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.props.fetchStarships();
   }
+
+  componentWillMount() {
+    if (this.props.starships.results.length === 0) {
+      this.props.fetchStarships();
+    }
+  }
+
   render() {
     return (
       <div>
@@ -24,4 +30,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({fetchStarships}, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(App);
+function mapStateToProps({starships}) {
+  return {starships};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
