@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     bundle: "./src/main.js",
@@ -25,12 +26,24 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: ["style-loader", "css-loader", "less-loader"]
+        exclude: /(node_modules|bower_components)/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [{
+            loader: "css-loader",
+            options: {
+              minimize: true
+              }
+            }, {
+                loader: "less-loader"
+            }]
+        })
       }
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin("vendor")
+    new ExtractTextPlugin("[name].css"),
+    new webpack.optimize.CommonsChunkPlugin("vendor"),
     new webpack.optimize.UglifyJsPlugin({
       beautify: false,
       mangle: {
