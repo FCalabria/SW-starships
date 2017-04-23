@@ -67,7 +67,7 @@ export default ({data}) => {
       url: 'https://vignette2.wikia.nocookie.net/starwars/images/0/07/Sublight_Products_Corporation.svg/revision/latest?cb=20160515051555'
     },
     {
-      name: ['Free Dac Volunteers Engineering corps.', 'Botajef Shipyards', 'Alliance Underground Engineering', 'Rothana Heavy Engineering', 'Huppla Pasa Tisc Shipwrights Collective', 'Allanteen Six shipyards', 'Feethan Ottraw Scalable Assemblies', 'Gwori Revolutionary Industries'],
+      name: ['Free Dac Volunteers Engineering corps.', 'Botajef Shipyards', 'Alliance Underground Engineering', 'Rothana Heavy Engineering', 'Huppla Pasa Tisc Shipwrights Collective', 'Allanteen Six shipyards', 'Feethan Ottraw Scalable Assemblies', 'Gwori Revolutionary Industries', 'Fondor Shipyards'],
       url: 'http://emptyensemble.com/wp-content/themes/emptyensemble2015/assets/images/empty_ensemble_empty_set_logo.png'
     },
 
