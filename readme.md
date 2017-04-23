@@ -1,4 +1,5 @@
 Using [this](https://swapi.co/documentation#starships) awesome api. Thanks!
+Also, most of the logos for the starships manufacturers are the work of [viperaviator](http://viperaviator.deviantart.com/) or from [wookieepedia](http://starwars.wikia.com/wiki/Main_Page)
 
 ## Next steps
 ### Will try to do
