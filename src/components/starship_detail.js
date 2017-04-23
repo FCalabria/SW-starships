@@ -4,13 +4,15 @@ import { connect } from 'react-redux';
 import { fetchStarshipDetail } from '../actions/index';
 import ManufacturerLogo from '../containers/manufacturer_logo';
 import DetailsTable from '../containers/details_table';
+import Starship from '../classes/starship.js';
+
 import '../styles/detail.less';
 
 class StarshipDetail extends Component {
   constructor(props) {
     super(props);
     this.ID = props.match.params.id
-    this.starship = {};
+    this.defineStarship();
   }
 
   componentWillMount() {
@@ -18,7 +20,11 @@ class StarshipDetail extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.starship = nextProps.starships.detail;
+    this.defineStarship(nextProps.starships.detail);
+  }
+
+  defineStarship(data) {
+    this.starship = new Starship(data);
   }
 
   render() {

@@ -78,12 +78,8 @@ export default ({data}) => {
 
   function renderImages(data) {
     if (data) {
-       // Solve typos in DB
-      data = data
-        .replace('Cyngus', 'Cygnus')
-        .replace('Nubia Star Drives, Incorporated', 'Nubia Star Drives');
-      return data.split(/,|\//g).map((company) => {
-        return <img key={company} src={getLogoFor(company.trim())} alt={company} title={company}/>
+      return data.map((company) => {
+        return <img key={company} src={getLogoFor(company)} alt={company} title={company}/>
       })
     }
   }
