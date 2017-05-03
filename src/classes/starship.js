@@ -2,6 +2,7 @@ export default class Starship {
   constructor(data) {
     if (data) {
       this.ID = data.url.match(/[0-9]+/g)[0];
+      this.max_atmosphering_speed = data.max_atmosphering_speed.replace('km', '');
       this.manufacturer = _.clone(data).manufacturer
         .replace('Cyngus', 'Cygnus') // Correct DB typo
         .replace('Nubia Star Drives, Incorporated', 'Nubia Star Drives') // Prevent incorrect splitting
@@ -13,7 +14,7 @@ export default class Starship {
 
   getCost(parseCharacters = '---') {
 
-    function parseCurrency(credits) {
+    const parseCurrency = (credits) => {
       let array = _.reverse(credits.split(''));
       for (let i = 3; i < array.length; i = i + 4) {
         array.splice(i, 0, ',');
@@ -26,5 +27,33 @@ export default class Starship {
       : parseCurrency(this.cost_in_credits);
   }
 
+  getConsumablesInDays() {
+    if (this.consumables && this.consumables !== 'unknown') {
+      let consumables = {
+        quantity: parseInt(this.consumables.split(' ')[0]),
+        unit: this.consumables.split(' ')[1]
+      }
+      switch (consumables.unit) {
+        case 'year':
+        case 'years':
+          consumables.quantity = consumables.quantity * 365
+          break;
+        case 'month':
+        case 'months':
+          consumables.quantity = consumables.quantity * 30
+          break;
+        case 'week':
+        case 'weeks':
+          consumables.quantity = consumables.quantity * 7
+          break;
+        case 'hour':
+        case 'hours':
+          consumables.quantity = consumables.quantity / 24
+          break;
+      }
+      return consumables.quantity;
+    }
+    return -1;
+  }
 
 }

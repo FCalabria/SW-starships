@@ -30,7 +30,7 @@ class StarshipDetail extends Component {
   render() {
     return (
       <div className="starship-detail">
-        <div>
+        <div className="detail-header">
           <h1>{this.starship.name}</h1>
           <p>{this.starship.model}</p>
           <ManufacturerLogo data={this.starship.manufacturer}/>
