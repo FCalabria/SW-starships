@@ -33,8 +33,8 @@ class StarshipDetail extends Component {
         <div className="detail-header">
           <h1>{this.starship.name}</h1>
           <p>{this.starship.model}</p>
-          <ManufacturerLogo data={this.starship.manufacturer}/>
         </div>
+        <ManufacturerLogo data={this.starship.manufacturer}/>
         <DetailsTable data={this.starship}/>
       </div>
     );

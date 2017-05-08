@@ -3,10 +3,9 @@ Also, most of the logos for the starships manufacturers are the work of [viperav
 
 ## Next steps
 ### Will try to do
-1. Detail page for every starship
-2. Include images in detail page (probably with google API)
-3. Improve responsiveness and loading times
-4. Deploy to public (on raspberry, for example)
+1. Include images in detail page (probably with google API)
+2. Improve responsiveness and loading times
+3. Deploy to public (on raspberry, for example)
 
 ### Maybe
 - Add animations, just for fun

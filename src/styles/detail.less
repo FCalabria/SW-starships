@@ -1,16 +1,41 @@
+@import 'variables';
 .starship-detail {
-  img {
-    max-height: 150px;
-    margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  .detail-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    h1 {
+      margin-right: 1rem;
+    }
   }
-  .level-bar {
-    margin: 1rem 0;
+  img {
+    max-height: 80px;
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+  .details-content {
+    border-top: 1px solid @gray-blue;
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    .full-width {
+      width: 100%;
+    }
     .name-label {
+      color: lightslategray;
       fill: lightslategray;
       font-weight: bold;
     }
     .level-value {
+      color: white;
       fill: white;
+      font-weight: normal;
+    }
+    .level-bar, p {
+      margin: 1rem 1rem 1rem 0;
     }
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({name, min, max, level}) => {
+export default ({name, min, max, level, unit}) => {
   min = parseFloat(min);
   max = parseFloat(max);
   level = parseFloat(level);
@@ -41,7 +41,7 @@ export default ({name, min, max, level}) => {
           <path d={fullPath} fill="black" opacity="0.1"/>
           <path d={fullPath} stroke="black" strokeWidth="2" fill="transparent" filter="url(#background)"/>
           <text x="0" y={svgConstants.height - svgConstants.lowBarHeight - 5} className="name-label">{name}</text>
-          <text x={svgConstants.lowBarWidth + svgConstants.minBar * 3} y={svgConstants.height - svgConstants.lowBarHeight - 5} className="level-value">{level}</text>
+          <text x={svgConstants.lowBarWidth + svgConstants.minBar * 3} y={svgConstants.height - svgConstants.lowBarHeight - 5} className="level-value">{level}{unit}</text>
         </svg>
       </div>);
   }
