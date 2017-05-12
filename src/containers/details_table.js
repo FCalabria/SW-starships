@@ -6,7 +6,7 @@ export default ({data}) => {
     <div className="details-content">
       <p className="name-label full-width">Cost: <span className="level-value">{data.getCost()}</span></p>
       <LevelBar name="MGLT" min="10" max="120" level={data.MGLT} />
-      <LevelBar name="Hyperdrive rating" min="0.5" max="6" level={data.hyperdrive_rating} />
+      <LevelBar name="Hyperdrive rating" min="6" max="0.5" level={data.hyperdrive_rating} />
       <LevelBar name="Atmos speed" min="0" max="8000" level={data.max_atmosphering_speed} unit="km/h"/>
       <LevelBar name="Crew" min="1" max="342953" level={data.crew} />
       <LevelBar name="Passengers" min="0" max="843342" level={data.passengers} />
