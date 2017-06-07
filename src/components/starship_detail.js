@@ -12,11 +12,9 @@ import '../styles/detail.less';
 class StarshipDetail extends Component {
   constructor(props) {
     super(props);
-    this.ID = props.match.params.id
-    this.photos = [];
+    this.props;
+    this.ID = props.match.params.id;
     this.defineStarship();
-    this.catchPhotos = this.catchPhotos.bind(this);
-    this.handlePhotos = this.handlePhotos.bind(this);
   }
 
   componentWillMount() {
@@ -24,36 +22,16 @@ class StarshipDetail extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.defineStarship(nextProps.starships.detail);
+    if (!this.starship.name) {
+      this.defineStarship(nextProps.starships.detail);
+    }
   }
 
   defineStarship(data) {
     this.starship = new Starship(data);
     if (this.starship.name) {
-      this.props.fetchPhotos(this.starship.name)
-      .then(this.handlePhotos)
-      .catch(this.catchPhotos);
+      this.props.fetchPhotos(this.starship.name);
     }
-  }
-
-  handlePhotos(data) {
-    this.photos = data.items.map(item => item.pagemap.cse_thumbnail[0]);
-  }
-
-  catchPhotos(error) {
-    this.photos = [{
-      src: 'http://only-paper.ru/_nw/94/90619030.jpg',
-      width: 520,
-      height: 358
-    }, {
-      src: 'http://i.imgur.com/gzu2WyQ.jpg',
-      width: 1400,
-      height: 577
-    }, {
-      src: 'https://s-media-cache-ak0.pinimg.com/originals/1b/5f/b3/1b5fb3faeb3b13d7b8d6c3d7221e8328.jpg',
-      width: 1280,
-      height: 720
-    }];
   }
 
   render() {
@@ -74,8 +52,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchStarshipDetail, fetchPhotos}, dispatch);
 }
 
-function mapStateToProps({ starships }) {
-  return { starships };
+function mapStateToProps({ starships, googleData }) {
+  return { starships, googleData };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(StarshipDetail);

@@ -26,5 +26,9 @@ export function fetchStarshipDetail(id) {
 }
 
 export function fetchPhotos(searchTerm) {
-  return axios.get(`${GOOGLE_URL}?key=${KEY}&cx=${CX}&q=${searchTerm}&fileType=png+jpg`);
+  const request = axios.get(`${GOOGLE_URL}?key=${KEY}&cx=${CX}&q=${searchTerm}&fileType=png+jpg`);
+  return {
+    type: FETCH_PHOTOS,
+    payload: request
+  }
 }
