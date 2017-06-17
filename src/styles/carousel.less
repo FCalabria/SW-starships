@@ -1,0 +1,12 @@
+.carousel {
+  overflow: auto;
+  display: flex;
+  max-width: calc(100vw ~'-' 4rem);
+  margin: 1rem 0;
+  &>img {
+    flex-shrink: 0;
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+}

@@ -79,11 +79,11 @@ export default ({data}) => {
   function renderImages(data) {
     if (data) {
       return data.map((company) => {
-        return <img key={company} src={getLogoFor(company)} alt={company} title={company}/>
+        return <img key={company} src={getLogoFor(company)} alt={company} title={company} className="logo"/>
       })
     }
   }
 
   return (
-    <div>{renderImages(data)}</div>);
+    <div className="logos">{renderImages(data)}</div>);
 }

@@ -5,6 +5,7 @@ import { fetchStarshipDetail } from '../actions/index';
 import { fetchPhotos } from '../actions/index';
 import ManufacturerLogo from '../containers/manufacturer_logo';
 import DetailsTable from '../containers/details_table';
+import Carousel from '../containers/carousel';
 import Starship from '../classes/starship.js';
 
 import '../styles/detail.less';
@@ -40,8 +41,9 @@ class StarshipDetail extends Component {
         <div className="detail-header">
           <h1>{this.starship.name}</h1>
           <p>{this.starship.model}</p>
+          <ManufacturerLogo data={this.starship.manufacturer}/>
         </div>
-        <ManufacturerLogo data={this.starship.manufacturer}/>
+        <Carousel data={this.props.googleData.photos} />
         <DetailsTable data={this.starship}/>
       </div>
     );

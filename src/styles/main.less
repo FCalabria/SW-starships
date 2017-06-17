@@ -1,6 +1,9 @@
 @import 'variables.less';
 @import url('https://fonts.googleapis.com/css?family=Dosis:300,500,700|Ubuntu:500');
-
+* {
+  box-sizing: border-box;
+  flex: 0 1 auto;
+}
 body {
   background-color:  @violet-blue;
   color: lightslategray;
@@ -24,7 +27,6 @@ a {
 .container {
   height: 100vh;
   padding: 2rem;
-  box-sizing: border-box;
   overflow: auto;
   display: flex;
   background-image: linear-gradient(
