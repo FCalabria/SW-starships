@@ -1,10 +1,21 @@
+@import 'variables';
 .carousel {
   overflow: auto;
   display: flex;
-  max-width: calc(100vw ~'-' 4rem);
+  max-width: calc(100vw ~'-' 2rem);
   margin: 1rem 0;
+  @media @desktop {
+    max-width: calc(100vw ~'-' 4rem);
+  }
   &>img {
+    max-height: 150px;
     flex-shrink: 0;
+    @media @from-tablet {
+      max-height: 180px;
+    }
+    @media @desktop {
+      max-height: none;
+    }
     &:not(:last-child) {
       margin-right: 20px;
     }

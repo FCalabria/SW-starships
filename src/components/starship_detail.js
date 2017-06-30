@@ -39,8 +39,11 @@ class StarshipDetail extends Component {
     return (
       <div className="starship-detail">
         <div className="detail-header">
+        <div className="header-texts">
           <h1>{this.starship.name}</h1>
           <p>{this.starship.model}</p>
+          <span className="logos-text">Manufacturer: {this.starship.manufacturer}</span>
+        </div>
           <ManufacturerLogo data={this.starship.manufacturer}/>
         </div>
         <Carousel data={this.props.googleData.photos} />

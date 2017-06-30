@@ -1,44 +1,86 @@
 @import 'variables';
 .starship-detail {
-  display: flex;
-  flex-direction: column;
-  .detail-header {
     display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    h1 {
-      margin-right: 1rem;
+    flex-direction: column;
+    .detail-header {
+        display: flex;
+        h1 {
+            margin-right: 1rem;
+        }
+        p {
+            font-weight: bold;
+            width: 100%;
+            @media @desktop {
+                width: auto;
+            }
+        }
+    }
+    .header-texts {
+        @media @desktop {
+            flex-grow: 1;
+            align-items: baseline;
+            display: flex;
+        }
     }
     .logos {
-      margin-left: auto;
+        display: none;
+        @media @from-tablet {
+            display: initial;
+            margin-left: auto;
+        }
     }
-  }
-  .logo {
-    max-height: 80px;
-    &:not(:last-child) {
-      margin-right: 1rem;
+    .logos-text {
+        @media @from-tablet {
+            display: none;
+        }
     }
-  }
-  .details-content {
-    border-top: 1px solid @gray-blue;
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    .full-width {
-      width: 100%;
+    .logo {
+        max-height: 80px;
+        display: none;
+        @media @from-tablet {
+            display: initial;
+        }
+        &:not(:last-child) {
+            margin-right: 1rem;
+        }
     }
-    .name-label {
-      color: lightslategray;
-      fill: lightslategray;
-      font-weight: bold;
+    .details-content {
+        border-top: 1px solid @gray-blue;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        &>* {
+            flex-grow: 1;
+        }
+        @media @from-tablet {
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+        .full-width {
+            width: 100%;
+        }
+        .name-label {
+            color: lightslategray;
+            fill: lightslategray;
+            font-weight: bold;
+        }
+        .level-value {
+            color: white;
+            fill: white;
+            font-weight: normal;
+        }
+        .level-bar,
+        p {
+            padding: 1rem 1rem 1rem 0;
+        }
+        .level-bar {
+            @media @from-tablet {
+                width: 50%;
+            }
+            @media screen and (min-width: @levelBarTP) {
+                width: 33%;
+                max-width: 400px;
+            }
+        }
     }
-    .level-value {
-      color: white;
-      fill: white;
-      font-weight: normal;
-    }
-    .level-bar, p {
-      margin: 1rem 1rem 1rem 0;
-    }
-  }
 }

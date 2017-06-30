@@ -31,12 +31,16 @@ a {
 }
 
 @container-padding: 1rem;
+@container-padding-big: 2rem;
 .container {
-    height: 100vh; // padding: 2rem;
+    height: 100vh;
     padding: @container-padding;
     overflow: auto;
     display: flex;
     background-image: linear-gradient( @gray-blue, @violet-blue, @violet-blue 95vh, average(@dark-rustic, @violet-blue), average(@orange-rustic, @violet-blue) 99vh, average(orange, @violet-blue));
+    @media @desktop {
+        padding: @container-padding-big;
+    }
 }
 
 .starships-list {
@@ -105,8 +109,8 @@ a {
     padding: 1rem;
     color: @red-rustic;
     background-color: rgba(255, 255, 255, 0.3);
-    background-image: linear-gradient( rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2)); // width: calc(100% ~'-' 1rem);
-    width: 100%; // margin-left: 1rem;
+    background-image: linear-gradient( rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+    width: 100%;
     margin-bottom: 1rem;
     display: block;
     cursor: pointer;
