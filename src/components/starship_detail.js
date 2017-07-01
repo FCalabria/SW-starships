@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { fetchStarshipDetail } from '../actions/index';
-import { fetchPhotos } from '../actions/index';
 import ManufacturerLogo from '../containers/manufacturer_logo';
 import DetailsTable from '../containers/details_table';
 import Carousel from '../containers/carousel';

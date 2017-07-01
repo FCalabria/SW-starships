@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import StarshipsList from './starships_list';
 import LoadMore from '../components/load_more';
-import {bindActionCreators} from 'redux';
-import {fetchStarships} from '../actions/index';
-import {connect} from 'react-redux';
 
 class App extends Component {
   constructor(props) {

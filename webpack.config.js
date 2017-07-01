@@ -6,10 +6,7 @@ module.exports = {
       "axios",
       "lodash",
       "react",
-      "react-dom",
-      "react-redux",
-      "redux",
-      "redux-promise"
+      "react-dom"
     ]
   },
   output: {

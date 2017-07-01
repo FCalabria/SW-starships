@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import {bindActionCreators} from 'redux';
-import {fetchStarships} from '../actions/index';
-import {connect} from 'react-redux';
 
 class LoadMore extends Component {
 
