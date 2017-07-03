@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class LoadMore extends Component {
+export default class LoadMore extends Component {
 
   loadMore() {
-    this.props.fetchStarships(this.props.starships.next);
+    this.props.fetchStarships(this.props.next);
   }
 
   render() {
-    if (this.props.starships.next) {
+    if (this.props.next) {
       return (
         <button className="load-more" onClick={this.loadMore.bind(this)}>
           Load more
@@ -18,13 +18,3 @@ class LoadMore extends Component {
     }
   }
 }
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchStarships}, dispatch);
-}
-
-function mapStateToProps({starships}) {
-  return {starships};
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoadMore);

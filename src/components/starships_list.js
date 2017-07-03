@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import StarshipCard from '../containers/starship_card';
 
-class StarshipsList extends Component {
+export default class StarshipsList extends Component {
 
   renderStarship(starship) {
     return (<StarshipCard key={starship.url} data={starship}/>);
@@ -10,14 +10,8 @@ class StarshipsList extends Component {
   render() {
     return(
       <div className="starships-list">
-          {this.props.starships.results.map(this.renderStarship)}
+          {this.props.starships.map(this.renderStarship)}
       </div>
     );
   }
 }
-
-function mapStateToProps({starships}) {
-  return {starships};
-}
-
-export default connect(mapStateToProps)(StarshipsList);

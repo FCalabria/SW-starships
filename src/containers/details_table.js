@@ -2,6 +2,7 @@ import React from 'react';
 import LevelBar from './level_bar';
 
 export default ({data}) => {
+  if (!data || !data.getCost) return (<div>Loading...</div>);
   return (
     <div className="details-content">
       <p className="name-label full-width">Cost: <span className="level-value">{data.getCost()}</span></p>

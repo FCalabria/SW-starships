@@ -5,10 +5,8 @@ import routes from './routes';
 import './styles/main.less';
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <HashRouter>
-      {routes}
-    </HashRouter>
-  </Provider>
+  <HashRouter>
+    {routes}
+  </HashRouter>
   , document.querySelector('.container'));
 

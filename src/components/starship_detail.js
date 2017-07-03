@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import ManufacturerLogo from '../containers/manufacturer_logo';
 import DetailsTable from '../containers/details_table';
 import Carousel from '../containers/carousel';
@@ -6,55 +7,64 @@ import Starship from '../classes/starship.js';
 
 import '../styles/detail.less';
 
-class StarshipDetail extends Component {
+export default class StarshipDetail extends Component {
   constructor(props) {
     super(props);
     this.props;
     this.ID = props.match.params.id;
-    this.defineStarship();
+    this.state = {
+      starship: {},
+      photos: []
+    };
+  }
+
+  fetchPhotos(searchTerm) {
+    const GOOGLE_URL = 'https://www.googleapis.com/customsearch/v1'
+    const KEY = 'AIzaSyD9k-K9U9RWMzbCv3gTy_SFXZAWy1GjIsQ';
+    const CX = '010600706209839140863:tp5xiakrasi';
+    return axios.get(`${GOOGLE_URL}?key=${KEY}&cx=${CX}&q=${searchTerm}&fileType=png+jpg`)
+      .then(result => result.data.items
+        .filter(photo => photo.pagemap && _.isArray(photo.pagemap.cse_thumbnail))
+        .map(photo => photo.pagemap.cse_thumbnail[0])
+      );
+  }
+
+  fetchStarshipDetail(id) {
+    const ROOT_URL = 'http://swapi.co/api/starships/';
+    return axios.get(`${ROOT_URL}${id}/`)
+      .then(result => this.setState({
+        photos: this.state.photos,
+        starship: new Starship(result.data)
+      }))
+      .then(() => {
+        if (this.state.starship.name) {
+          return this.fetchPhotos(this.state.starship.name);
+        }
+      })
+      .then((photos) => this.setState({
+        starship: this.state.starship,
+        photos: photos
+      }));
   }
 
   componentWillMount() {
-    this.props.fetchStarshipDetail(this.ID);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (!this.starship.name) {
-      this.defineStarship(nextProps.starships.detail);
-    }
-  }
-
-  defineStarship(data) {
-    this.starship = new Starship(data);
-    if (this.starship.name) {
-      this.props.fetchPhotos(this.starship.name);
-    }
+    this.fetchStarshipDetail(this.ID);
   }
 
   render() {
     return (
       <div className="starship-detail">
         <div className="detail-header">
-        <div className="header-texts">
-          <h1>{this.starship.name}</h1>
-          <p>{this.starship.model}</p>
-          <span className="logos-text">Manufacturer: {this.starship.manufacturer}</span>
+          <div className="header-texts">
+            <h1>{this.state.starship.name}</h1>
+            <p>{this.state.starship.model}</p>
+            <span className="logos-text">Manufacturer: {this.state.starship.manufacturer}</span>
+          </div>
+          <ManufacturerLogo data={this.state.starship.manufacturer} />
         </div>
-          <ManufacturerLogo data={this.starship.manufacturer}/>
-        </div>
-        <Carousel data={this.props.googleData.photos} />
-        <DetailsTable data={this.starship}/>
+        <Carousel data={this.state.photos} />
+        <DetailsTable data={this.state.starship} />
       </div>
     );
   }
 }
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchStarshipDetail, fetchPhotos}, dispatch);
-}
-
-function mapStateToProps({ starships, googleData }) {
-  return { starships, googleData };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(StarshipDetail);
