@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "webpack-dev-server",
     "build": "webpack -p",
-    "postinstall": "node_modules/.bin/webpack -p",
+    "postinstall": "NODE_ENV=production node_modules/.bin/webpack -p",
     "start": "node ./src/app.js"
   },
   "author": "pcalabria@gmail.com",
