@@ -6,7 +6,8 @@
   "scripts": {
     "start:dev": "webpack-dev-server",
     "build": "webpack -p",
-    "start": "npm run build && node ./src/app.js"
+    "postinstall": "node_modules/.bin/webpack -p",
+    "start": "node ./src/app.js"
   },
   "author": "pcalabria@gmail.com",
   "license": "ISC",
@@ -16,9 +17,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router-dom": "^4.0.0",
-    "webpack-hot-middleware": "^2.18.2"
-  },
-  "devDependencies": {
+    "webpack-hot-middleware": "^2.18.2",
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
     "babel-preset-react": "^6.23.0",
