@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "webpack-dev-server",
     "build": "webpack -p",
-    "start": "npm install && webpack-dev-server"
+    "start": "npm run build && node ./src/app.js"
   },
   "author": "pcalabria@gmail.com",
   "license": "ISC",
