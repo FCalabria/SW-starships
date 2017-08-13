@@ -30,7 +30,7 @@ export default class StarshipDetail extends Component {
   }
 
   fetchStarshipDetail(id) {
-    const ROOT_URL = 'http://swapi.co/api/starships/';
+    const ROOT_URL = 'https://swapi.co/api/starships/';
     return axios.get(`${ROOT_URL}${id}/`)
       .then(result => this.setState({
         photos: this.state.photos,
