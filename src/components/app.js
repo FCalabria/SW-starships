@@ -12,7 +12,7 @@ export default class App extends Component {
     };
   }
   fetchStarships(nextUrl) {
-    const ROOT_URL = 'http://swapi.co/api/starships/';
+    const ROOT_URL = 'https://swapi.co/api/starships/';
     const url = nextUrl || ROOT_URL;
     return axios.get(url)
       .then(response => this.setState({
